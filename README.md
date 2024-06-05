@@ -25,29 +25,28 @@ This is a Learning Management System (LMS) built using Laravel for the junior La
 
 ### 1. Clone the Repository
 Clone the repository to your local machine using the following command:
-git clone https://github.com/yourusername/laravel-lms.git
-cd laravel-lms
+- git clone https://github.com/yourusername/laravel-lms.git
+- cd laravel-lms
 
 ### 2. Install Dependencies
 Install the necessary dependencies using Composer and NPM:
-composer install
-npm install
-npm run dev
+- composer install
+- npm install
+- npm run dev
 
 ### 3. Set Up Environment Variables
 Copy the .env.example file to .env and update the necessary configurations, such as database settings:
-cp .env.example .env
-php artisan key:generate
+- cp .env.example .env
+- php artisan key:generate
 
 ### 4. Database Migration
 Run the following commands to migrate the database and seed the initial data:
-php artisan migrate
-php artisan db:seed
+- php artisan migrate
 
 ### 5. Start the Development Server
 Start the Laravel development server:
-php artisan serve
-The application will be accessible at http://localhost:8000.
+- php artisan serve
+- The application will be accessible at http://localhost:8000.
 
 ## Database Schema
 The database schema consists of the following tables:
