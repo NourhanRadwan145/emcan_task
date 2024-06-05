@@ -72,8 +72,8 @@ The database schema consists of the following tables:
 - Search Functionality: Allows users to search for courses by title or description.
 
 ## Frontend
-Blade Templates: Used to create a simple and clean UI for the LMS.
-Responsive Design: Ensures the UI is responsive and user-friendly across different devices.
+- Blade Templates: Used to create a simple and clean UI for the LMS.
+- Responsive Design: Ensures the UI is responsive and user-friendly across different devices.
 
 ## Testing
 Feature tests are written to cover the main functionalities such as course creation and user enrollment. Run the tests using the following command:
