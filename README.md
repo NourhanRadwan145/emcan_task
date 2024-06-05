@@ -7,59 +7,78 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Laravel LMS Project
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+This is a Learning Management System (LMS) built using Laravel for the junior Laravel developer position task at Emcan Solutions. The system allows users to manage courses, lessons, and enrollments with role-based access control.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Table of Contents
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [Project Setup](#project-setup)
+- [Database Schema](#database-schema)
+- [Basic Functionality](#basic-functionality)
+- [Additional Features](#additional-features)
+- [Frontend](#frontend)
+- [Testing](#testing)
+- [License](#License)
 
-## Learning Laravel
+## Project Setup
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1. Clone the Repository
+Clone the repository to your local machine using the following command:
+git clone https://github.com/yourusername/laravel-lms.git
+cd laravel-lms
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 2. Install Dependencies
+Install the necessary dependencies using Composer and NPM:
+composer install
+npm install
+npm run dev
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 3. Set Up Environment Variables
+Copy the .env.example file to .env and update the necessary configurations, such as database settings:
+cp .env.example .env
+php artisan key:generate
 
-## Laravel Sponsors
+### 4. Database Migration
+Run the following commands to migrate the database and seed the initial data:
+php artisan migrate
+php artisan db:seed
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 5. Start the Development Server
+Start the Laravel development server:
+php artisan serve
+The application will be accessible at http://localhost:8000.
 
-### Premium Partners
+## Database Schema
+The database schema consists of the following tables:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- Users: Managed by Laravel Breeze or Jetstream for authentication.
+- Courses: Stores course information.
+    - Fields: id, title, description, created_at, updated_at
+- Lessons: Stores lesson information.
+    - Fields: id, title, content, course_id, created_at, updated_at
+- Enrollments: Tracks user enrollments in courses.
+    - Fields: id, user_id, course_id, created_at, updated_at
 
-## Contributing
+## Basic Functionality
+- CRUD Operations for Courses and Lessons: Implemented to allow administrators to create, read, update, and delete courses and lessons.
+- User Enrollment: Allows users to enroll in courses.
+- List of Enrolled Courses: Displays a list of courses a user is enrolled in.
+- List of Lessons for a Course: Displays a list of lessons for a specific course.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Additional Features
+- Role-Based Access Control:
+    - Only authenticated users can enroll in courses.
+    - Only admin users can create, update, or delete courses and lessons.
+- Search Functionality: Allows users to search for courses by title or description.
 
-## Code of Conduct
+## Frontend
+Blade Templates: Used to create a simple and clean UI for the LMS.
+Responsive Design: Ensures the UI is responsive and user-friendly across different devices.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Testing
+Feature tests are written to cover the main functionalities such as course creation and user enrollment. Run the tests using the following command:
+php artisan test
 
 ## License
 
