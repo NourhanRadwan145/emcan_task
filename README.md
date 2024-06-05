@@ -77,7 +77,7 @@ Responsive Design: Ensures the UI is responsive and user-friendly across differe
 
 ## Testing
 Feature tests are written to cover the main functionalities such as course creation and user enrollment. Run the tests using the following command:
-php artisan test
+- php artisan test
 
 ## License
 
