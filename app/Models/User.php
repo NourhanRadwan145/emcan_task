@@ -42,4 +42,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function enrollments()
+    {
+        return $this->hasMany(Enrollment::class);
+    }
 }
