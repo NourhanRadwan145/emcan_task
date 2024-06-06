@@ -17,8 +17,12 @@
             <h2>Lessons</h2>
             @forelse($course->lessons as $lesson)
                 <div class="lesson mb-4">
-                    <h3>{{ $lesson->title }}</h3>
-                    <p>{{ $lesson->content }}</p>
+                <ul>
+                    <li>
+                    <a href="{{ route('lessons.show', $lesson) }}">{{ $lesson->title }}</a>
+                    </li>
+                    </ul>
+
                 </div>
                 @empty
                 <li class="list-group-item">No lessons found.</li>

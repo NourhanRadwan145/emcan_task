@@ -62,7 +62,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
 Route::middleware(['auth'])->group(function () {
     Route::resource('courses', CourseController::class);
     Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
-    // Route::resource('courses.lessons', LessonController::class)->shallow();
+    Route::get('/lessons/{lesson}', [LessonController::class,'show'])->name('lessons.show');
     Route::post('courses/{course}/enroll', [EnrollmentController::class, 'enroll'])->name('courses.enroll');
     Route::get('enrolled-courses', [CourseController::class, 'enrolledCourses'])->name('enrolled-courses');
     Route::get('/search-results', [SearchController::class, 'index'])->name('search.results');

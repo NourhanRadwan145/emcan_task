@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Lesson;
 use App\Models\Course;
+use Illuminate\Support\Facades\Auth;
+
 
 class LessonController extends Controller
 {
@@ -17,7 +19,12 @@ class LessonController extends Controller
     public function show(String $id)
     {
         $lesson = Lesson::find($id);
-        return view('admin.lesson', compact('lesson'));
+        if(Auth::user()->isAdmin())
+        {
+            return view('admin.lesson', compact('course', 'lessons'));
+        }
+        return view('lessons.show', compact('lesson'));
+
     }
 
     public function create(Course $course)
