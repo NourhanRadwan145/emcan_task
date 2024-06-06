@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Course;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::paginate();
         return view('courses.index', compact('courses'));
     }
 
@@ -34,6 +35,11 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
+        $lessons = $course->lessons;
+        if(Auth::user()->isAdmin())
+        {
+            return view('admin.course', compact('course', 'lessons'));
+        }
         return view('courses.show', compact('course'));
     }
 

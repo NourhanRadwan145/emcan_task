@@ -15,12 +15,14 @@
     <div class="row">
         <div class="col-12">
             <h2>Lessons</h2>
-            @foreach($course->lessons as $lesson)
+            @forelse($course->lessons as $lesson)
                 <div class="lesson mb-4">
                     <h3>{{ $lesson->title }}</h3>
                     <p>{{ $lesson->content }}</p>
                 </div>
-            @endforeach
+                @empty
+                <li class="list-group-item">No lessons found.</li>
+            @endforelse
         </div>
     </div>
 

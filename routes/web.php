@@ -37,11 +37,32 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('register', [AuthController::class, 'register']);
 
+// Admin routes
+// Route::middleware(['auth', ])->group(function () {
+//     Route::resource('users', UserController::class);
+//     Route::resource('courses', CourseController::class);
+//     Route::get('/course/{course}/lessons/create', [LessonController::class, 'create'])->name('lessons.create');
+//     Route::post('/course/{course}/lessons', [LessonController::class, 'store'])->name('lessons.store');
+//     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+//     Route::get('/course/{course}', [CourseController::class,'show'])->name('admin.course');
+
+// });
+
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/course/{course}', [CourseController::class,'show'])->name('admin.course');
+    Route::resource('courses', CourseController::class)->except(['index', 'show']);
+    Route::resource('lessons', LessonController::class);
+    Route::get('/lessons/{lesson}', [LessonController::class,'show'])->name('admin.lesson');
+
+
+});
+
 // Protected routes
 Route::middleware(['auth'])->group(function () {
     Route::resource('courses', CourseController::class);
     Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
-    Route::resource('courses.lessons', LessonController::class)->shallow();
+    // Route::resource('courses.lessons', LessonController::class)->shallow();
     Route::post('courses/{course}/enroll', [EnrollmentController::class, 'enroll'])->name('courses.enroll');
     Route::get('enrolled-courses', [CourseController::class, 'enrolledCourses'])->name('enrolled-courses');
     Route::get('/search-results', [SearchController::class, 'index'])->name('search.results');
@@ -49,11 +70,5 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-// Admin routes
-Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::resource('users', UserController::class);
-    Route::resource('courses', CourseController::class);
-    Route::resource('lessons', LessonController::class);
-});
+
 
