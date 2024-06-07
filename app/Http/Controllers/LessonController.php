@@ -19,12 +19,14 @@ class LessonController extends Controller
     public function show(String $id)
     {
         $lesson = Lesson::find($id);
-        if(Auth::user()->isAdmin())
-        {
-            return view('admin.lesson', compact('course', 'lessons'));
-        }
+        
         return view('lessons.show', compact('lesson'));
 
+    }
+
+    public function showAdmin(Lesson $lesson)
+    {
+        return view('admin.lesson', compact('lesson'));
     }
 
     public function create(Course $course)

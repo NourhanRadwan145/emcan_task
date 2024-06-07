@@ -10,9 +10,9 @@
             @forelse ($courses as $course)
                 <div class="col-md-6 mb-4" style="display:flex;justify-content:center;" >
                     <div class="card h-100" >
-                        <img class="card-img-top" src="{{ $course->image }}" alt="Course Image" style="max-height: 500px; width: 60%; object-fit: cover;">
+                        <img style="max-width:100%; height:auto;" class="card-img-top" src="{{ $course->image }}" alt="Course Image" style="max-height: 500px; width: 60%; object-fit: cover;">
                         <div class="card-body text-center">
-                            <h5 class="card-title"><a href="{{ route('courses.show', $course) }}">{{ $course->title }}</a></h5>
+                            <h3 class="card-title"><a href="{{ route('courses.show', $course) }}">{{ $course->title }}</a></h3>
                         </div>
                     </div>
                 </div>
