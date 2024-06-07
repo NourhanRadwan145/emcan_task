@@ -51,7 +51,7 @@ Route::post('register', [AuthController::class, 'register']);
 
 // Protected routes
 Route::middleware(['auth'])->group(function () {
-    Route::resource('courses', CourseController::class);
+    Route::resource('courses', CourseController::class)->except('create','edit','update','delete');
     Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
     Route::get('/lessons/{lesson}', [LessonController::class,'show'])->name('lessons.show');
     Route::post('courses/{course}/enroll', [EnrollmentController::class, 'enroll'])->name('courses.enroll');
