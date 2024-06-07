@@ -20,6 +20,7 @@ This is a Learning Management System (LMS) built using Laravel for the junior La
 - [Frontend](#frontend)
 - [Testing](#testing)
 - [License](#License)
+- [Demo Video](#Demo-Video)
 
 ## Project Setup
 
@@ -79,6 +80,14 @@ The database schema consists of the following tables:
 Feature tests are written to cover the main functionalities such as course creation and user enrollment. Run the tests using the following command:
 - php artisan test
 
+## Demo Video
+
+Watch our demo video to see the Laravel LMS project in action:
+
+[![Laravel LMS Demo]](https://drive.google.com/file/d/1QAbYrvIqvPoabPsfK061db7K7jvwzCqK/view?usp=drive_link)
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
