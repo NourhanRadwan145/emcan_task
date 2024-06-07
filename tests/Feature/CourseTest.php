@@ -45,30 +45,6 @@ public function test_delete_course()
     $this->assertDatabaseMissing('courses', ['id' => 1]);
 }
 
-// public function test_search_courses_by_title()
-// {
-//     // Create sample courses
-//     Course::create(['title' => 'Test Course 1', 'description' => 'Description for Test Course 1']);
-//     Course::create(['title' => 'Test Course 2', 'description' => 'Description for Test Course 2']);
-//     Course::create(['title' => 'Another Course', 'description' => 'Description for Another Course']);
-
-//     $query = ('test');
-//     $courses = Course::where('title', 'like', "%$query%")
-//                      ->orWhere('description', 'like', "%$query%")
-//                      ->get();
-
-//          // Simulate a request to the search results view
-//          $response = $this->get(route('search.results'));
-
-//          // Assert that the response is successful (HTTP status code 200)
-//          $response->assertStatus(200);
-
-
-//          // Assert that the response contains the popular courses
-//          foreach ($courses as $course) {
-//              $response->assertSee($course->title);
-//          }
-// }
 
 // Update Course
 public function test_update_course()
