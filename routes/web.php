@@ -49,6 +49,16 @@ Route::post('register', [AuthController::class, 'register']);
 // });
 
 
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/course/{course}', [CourseController::class,'show'])->name('admin.course');
+    Route::resource('courses', CourseController::class);
+    Route::resource('lessons', LessonController::class);
+    Route::get('/admin/lessons/{lesson}', [LessonController::class, 'showAdmin'])->name('admin.lesson');
+
+});
+
+
 // Protected routes
 Route::middleware(['auth'])->group(function () {
     Route::resource('courses', CourseController::class)->except('create','edit','update','delete');
@@ -60,15 +70,6 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-Route::group(['middleware' => ['auth', 'admin']], function () {
-    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::get('/course/{course}', [CourseController::class,'show'])->name('admin.course');
-    Route::resource('courses', CourseController::class)->except(['index', 'show']);
-    Route::resource('lessons', LessonController::class)->except('show');
-    Route::get('/admin/lessons/{lesson}', [LessonController::class, 'showAdmin'])->name('admin.lesson');
-
-
-});
 
 
 

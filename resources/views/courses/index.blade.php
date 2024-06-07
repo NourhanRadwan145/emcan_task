@@ -3,7 +3,6 @@
 @section('content')
 <div class="jumbotron text-center">
     <h1 class="display-4">The Best Online Learning Platform</h1>
-    <p class="lead">Vero elitr justo clita lorem. Ipsum dolor at sed stet sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus eirmod elit.</p>
 </div>
 <!-- Search Form -->
 <form action="{{ route('search.results') }}" method="GET" class="mb-4">
