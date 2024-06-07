@@ -10,7 +10,7 @@ use App\Models\User;
 use App\Models\Course;
 use App\Models\Lesson;
 
-class LmsFeatureTest extends TestCase
+class CourseTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -52,18 +52,45 @@ public function test_delete_course()
 //     Course::create(['title' => 'Test Course 2', 'description' => 'Description for Test Course 2']);
 //     Course::create(['title' => 'Another Course', 'description' => 'Description for Another Course']);
 
+//     $query = ('test');
+//     $courses = Course::where('title', 'like', "%$query%")
+//                      ->orWhere('description', 'like', "%$query%")
+//                      ->get();
+
 //          // Simulate a request to the search results view
 //          $response = $this->get(route('search.results'));
 
 //          // Assert that the response is successful (HTTP status code 200)
 //          $response->assertStatus(200);
 
-//          // Assert that the response contains the search form
-//          $response->assertSee('Search');
 
 //          // Assert that the response contains the popular courses
 //          foreach ($courses as $course) {
 //              $response->assertSee($course->title);
 //          }
 // }
+
+// Update Course
+public function test_update_course()
+{
+    // Create a course
+    $course = Course::create([
+        'title' => 'Course to be updated',
+        'description' => 'This course will be updated.',
+    ]);
+
+    $course->update([
+        'title' => 'Updated Course',
+        'description' => 'Updated Description',
+
+    ]);
+
+
+      // Assert that the course details are updated in the database
+      $this->assertDatabaseHas('courses', [
+        'title' => 'Updated Course',
+        'description' => 'Updated Description',
+    ]);
+}
+
 }
