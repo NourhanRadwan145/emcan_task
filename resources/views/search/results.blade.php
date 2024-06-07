@@ -5,7 +5,7 @@
     <h2 class="text-center my-4">Search Results</h2>
     <br>
     <div class="row">
-        @foreach($courses as $course)
+        @forelse($courses as $course)
             <div class="col-md-4">
                 <div class="card mb-4">
                     <img  style="height:300px; width:500px" src="{{ $course->image }}" src="{{ $course->image }}" class="card-img-top" alt="Course Image">
@@ -16,7 +16,11 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+            @empty
+                <div class="col-12">
+                    <div class="alert alert-info text-center">There are no courses with this name or description.</div>
+                </div>
+            @endforelse
     </div>
 </div>
 @endsection

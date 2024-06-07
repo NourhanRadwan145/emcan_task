@@ -1,19 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-    <div >
-    <img class="about" src="{{ asset('images/course.jpg') }}" alt="Logo">
+    <div class="text-center mb-4">
+        <img class="about img-fluid" src="{{ asset('images/course.jpg') }}" alt="Logo">
     </div>
     <div class="container">
-        <h1>My Enrolled Courses</h1>
-        <ul class="list-group">
+        <h1 class="text-center mb-4">My Enrolled Courses</h1>
+        <div class="row">
             @forelse ($courses as $course)
-                <a href="{{ route('courses.show', $course) }}"><h1>{{ $course->title }}</h1></a>
-                <img style="height:300px; width:500px" src="{{ $course->image }}" class="card-img-top" alt="Course Image">
+                <div class="col-md-6 mb-4" style="display:flex;justify-content:center;" >
+                    <div class="card h-100" >
+                        <img class="card-img-top" src="{{ $course->image }}" alt="Course Image" style="max-height: 500px; width: 60%; object-fit: cover;">
+                        <div class="card-body text-center">
+                            <h5 class="card-title"><a href="{{ route('courses.show', $course) }}">{{ $course->title }}</a></h5>
+                        </div>
+                    </div>
+                </div>
+                <br>
             @empty
-                <li class="list-group-item">You are not enrolled in any courses.</li>
+                <div class="col-12">
+                    <div class="alert alert-info text-center">You are not enrolled in any courses.</div>
+                </div>
             @endforelse
-        </ul>
+        </div>
     </div>
-
 @endsection

@@ -1,7 +1,4 @@
 <!-- resources/views/admin/dashboard.blade.php -->
-<style>
-    
-</style>
 
 @extends('layouts.admin')
 
@@ -16,7 +13,7 @@
             <br>
             <div class="row mt-3 justify-content-center">
                 @forelse ($courses as $course)
-                    <div class="col-12 col-md-6 col-lg-6 mb-4"style="display:flex;justify-content:center;">
+                    <div class="col-12 col-mdst-6 col-lg-6 mb-4" style="display:flex;justify-content:center;">
                         <div class="card h-100">
                             <img class="card-img-top img-fluid fixed-width-img" style="height: 200px; object-fit: cover;" src="{{ $course->image }}" alt="Course Image">
                             <div class="card-body">

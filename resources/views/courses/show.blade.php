@@ -3,32 +3,36 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-12 text-center mb-4">
             <h1>{{ $course->title }}</h1>
             <br>
-            <img class="img-fluid" style="height:300px; width:500px" src="{{ $course->image }}" alt="Course Image">
+            <img class="img-fluid mb-3" style="max-width:100%; height:auto;" src="{{ $course->image }}" alt="Course Image">
             <p>{{ $course->description }}</p>
             <br>
         </div>
     </div>
 
+    <hr>
+
     <div class="row">
         <div class="col-12">
             <h2>Lessons</h2>
+            <br>
             @forelse($course->lessons as $lesson)
                 <div class="lesson mb-4">
-                <ul>
-                    <li>
-                    <a href="{{ route('lessons.show', $lesson) }}">{{ $lesson->title }}</a>
-                    </li>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="{{ route('lessons.show', $lesson) }}">{{ $lesson->title }}</a>
+                        </li>
                     </ul>
-
                 </div>
-                @empty
-                <li class="list-group-item">No lessons found.</li>
+            @empty
+                <div class="alert alert-info">No lessons found.</div>
             @endforelse
         </div>
     </div>
+
+    <hr>
 
     <div class="row">
         <div class="col-12">
