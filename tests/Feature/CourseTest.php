@@ -9,6 +9,7 @@ use Tests\TestCase;
 use App\Models\User;
 use App\Models\Course;
 use App\Models\Lesson;
+use App\Models\Enrollment;
 
 class CourseTest extends TestCase
 {
